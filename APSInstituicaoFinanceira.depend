@@ -1,0 +1,43 @@
+# depslib dependency file v1.0
+1572871877 source:c:\users\nycolasvieira\documents\codeblocksproject\apsinstituicaofinanceira\main.c
+	<stdio.h>
+	<stdlib.h>
+	"gerenciaClientes.h"
+	"banco.h"
+
+1572882492 c:\users\nycolasvieira\documents\codeblocksproject\apsinstituicaofinanceira\conta.h
+	"cliente.h"
+
+1572871881 c:\users\nycolasvieira\documents\codeblocksproject\apsinstituicaofinanceira\cliente.h
+
+1572882550 c:\users\nycolasvieira\documents\codeblocksproject\apsinstituicaofinanceira\banco.h
+	<time.h>
+	"conta.h"
+
+1572871914 c:\users\nycolasvieira\documents\codeblocksproject\apsinstituicaofinanceira\gerenciaclientes.h
+	<conio.h>
+	"cliente.h"
+
+1572717890 c:\users\nycolasvieira\documents\codeblocksproject\apsinstituicaofinanceira\cliente.c
+	"cliente.h"
+
+1572804289 c:\users\nycolasvieira\documents\codeblocksproject\apsinstituicaofinanceira\banco.c
+	<time.h>
+	"banco.h"
+	"gerenciaClientes.h"
+
+1572804289 source:c:\users\nycolasvieira\documents\codeblocksproject\apsinstituicaofinanceira\banco.c
+	<time.h>
+	"banco.h"
+	"gerenciaClientes.h"
+
+1572871390 source:c:\users\nycolasvieira\documents\codeblocksproject\apsinstituicaofinanceira\conta.c
+	<stdio.h>
+	<stdlib.h>
+	"banco.h"
+
+1572871390 c:\users\nycolasvieira\documents\codeblocksproject\apsinstituicaofinanceira\conta.c
+	<stdio.h>
+	<stdlib.h>
+	"banco.h"
+
