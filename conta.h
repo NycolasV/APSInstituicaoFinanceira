@@ -42,7 +42,7 @@ void imprimirConta(TConta conta)
     }
 }
 
-float depositar(TConta conta)
+int depositar(TConta conta, float *novoSaldo)
 {
     float valor;
 
@@ -52,15 +52,17 @@ float depositar(TConta conta)
     if(valor > 0)
     {
         conta.saldo += valor;
+        *novoSaldo = conta.saldo;
+
         printf("Novo saldo: %.2f", conta.saldo);
-        return conta.saldo;
+        return 1;
     }
 
     printf("Valor incorreto");
     return 0;
 }
 
-float debitar(TConta conta)
+int debitar(TConta conta, float *novoSaldo)
 {
     float valor;
 
@@ -72,16 +74,20 @@ float debitar(TConta conta)
         if(possuiSaldoEspecial(valor, conta.saldo, conta.limite))
         {
             conta.saldo -= valor;
+            *novoSaldo = conta.saldo;
+
             printf("Conta com limite, novo saldo: %.2f", conta.saldo);
-            return conta.saldo;
+            return 1;
         }
     }
 
     if(possuiSaldo(valor, conta.saldo))
     {
         conta.saldo -= valor;
+        *novoSaldo = conta.saldo;
+
         printf("Novo saldo: %.2f", conta.saldo);
-        return conta.saldo;
+        return 1;
     }
 
     printf("Saldo insuficiente ou Entrada incorreta");
@@ -130,7 +136,7 @@ int transferir(TConta origem, TConta destino, float *novoSaldoOrigem, float *nov
 
 int possuiSaldo(float valor, float saldo)
 {
-    if(valor > 0 && (saldo -= valor) > 0)
+    if(valor > 0 && (saldo -= valor) >= 0)
     {
         return 1;
     }
@@ -142,7 +148,7 @@ int possuiSaldoEspecial(float valor, float saldo, float limite)
 {
     limite -= (2*limite);
 
-    if(valor > 0 && (saldo -= valor) > limite)
+    if(valor > 0 && (saldo -= valor) >= limite)
     {
         return 1;
     }

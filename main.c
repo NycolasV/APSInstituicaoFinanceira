@@ -16,6 +16,9 @@ int main()
     contas = calloc(1, sizeof(TConta));
 
     menu();
+
+    free(clientes);
+    free(contas);
     return 0;
 }
 
@@ -171,7 +174,7 @@ int entradaNumeroConta(char menuEscolha)
         return operacaoTransferencia();
     }
 
-    int numero;
+    int numero, result = 0;
     TConta conta;
     float novoSaldo;
 
@@ -185,34 +188,28 @@ int entradaNumeroConta(char menuEscolha)
 
     case '5':
         conta = getConta(numero);
-
         if(getPosicaoConta(numero) >= 0)
         {
-            novoSaldo = depositar(conta);
-
-            if(novoSaldo > 0)
+            result = depositar(conta, &novoSaldo);
+            if(result)
             {
                 contas[getPosicaoConta(numero)].saldo = novoSaldo;
                 return 1;
             }
         }
-
         return 0;
 
     case '6':
         conta = getConta(numero);
-
         if(getPosicaoConta(numero) >= 0)
         {
-            novoSaldo = debitar(conta);
-
-            if(novoSaldo > 0)
+            result = debitar(conta, &novoSaldo);
+            if(result)
             {
                 contas[getPosicaoConta(numero)].saldo = novoSaldo;
                 return 1;
             }
         }
-
         return 0;
 
     case '8':
@@ -239,7 +236,7 @@ int operacaoTransferencia()
         int result = 0;
         result = transferir(origem, destino, &novoSaldoOrigem, &novoSaldoDestino);
 
-        if(result != 0)
+        if(result)
         {
             contas[getPosicaoConta(numeroOrigem)].saldo = novoSaldoOrigem;
             contas[getPosicaoConta(numeroDestino)].saldo = novoSaldoDestino;
